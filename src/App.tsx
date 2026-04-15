@@ -14,7 +14,6 @@ import {
   Zap, 
   Users, 
   DollarSign, 
-  CheckCircle2,
   PlayCircle,
   Copy,
   ArrowRight,
@@ -112,7 +111,7 @@ export default function App() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-urdu text-6xl md:text-8xl mb-8 leading-[1.3] drop-shadow-2xl"
+            className="font-urdu text-5xl md:text-8xl mb-8 leading-[1.3] drop-shadow-2xl"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white to-purple-400">
               بغیر کوڈنگ کے ایپس بنانا سیکھیں
@@ -146,7 +145,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Problem/Solution Stats */}
+      {/* Stats Section */}
       <section className="py-20 px-6 bg-white/[0.02]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="p-8">
@@ -164,7 +163,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Key Features */}
+      {/* Features Grid */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
@@ -213,157 +212,12 @@ export default function App() {
         </div>
       </section>
 
-      {/* Who is it for? */}
-      <section className="py-32 px-6 bg-cyan-500/5">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-20">
-          <div className="flex-1 text-right">
-            <h2 className="font-urdu text-5xl mb-12">یہ پلیٹ فارم کس کے لئے ہے؟</h2>
-            <div className="space-y-8">
-              {[
-                { title: "اسٹوڈنٹس", desc: "اسکول، کالج اور یونیورسٹی کے طلباء کے لئے بہترین موقع۔", icon: GraduationCap },
-                { title: "فری لانسرز", desc: "اپنی سروسز کو AI کے ذریعے اپ گریڈ کریں اور زیادہ کمائیں۔", icon: Users },
-                { title: "کانٹینٹ کریئیٹرز", desc: "اپنے چینل اور کام کے لئے خودکار ٹولز بنائیں۔", icon: Rocket },
-                { title: "آن لائن ارنرز", desc: "وہ لوگ جو گھر بیٹھے AI سے پیسے کمانا چاہتے ہیں۔", icon: DollarSign }
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-6 flex-row-reverse">
-                  <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0">
-                    <item.icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-urdu text-2xl mb-2">{item.title}</h4>
-                    <p className="text-cyan-100/60 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex-1 relative">
-            <div className="aspect-square bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-[40px] border border-white/10 p-8">
-              <div className="w-full h-full rounded-[20px] bg-[#000d26] border border-white/10 flex items-center justify-center overflow-hidden">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  <BrainCircuit className="w-40 h-40 text-cyan-400/50" />
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Prompts Library Preview */}
-      <section className="py-32 px-6 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row-reverse items-center justify-between mb-16 gap-6">
-            <div className="text-right">
-              <h2 className="font-urdu text-5xl mb-4">پرامپٹس لائبریری</h2>
-              <p className="text-cyan-100/60 font-urdu text-xl">صرف کاپی کریں اور اپنی ایپ تیار پائیں</p>
-            </div>
-            <button className="text-cyan-400 flex items-center gap-2 hover:gap-4 transition-all font-urdu text-lg flex-row-reverse">
-              تمام پرامپٹس دیکھیں <ArrowRight className="w-5 h-5 rotate-180" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { 
-                title: "پرسنل پورٹ فولیو ویب سائٹ", 
-                prompt: "Create a modern personal portfolio website with a dark theme, responsive layout, and a contact form using React and Tailwind CSS.",
-                category: "ویب سائٹ"
-              },
-              { 
-                title: "ٹو-ڈو لسٹ ایپ", 
-                prompt: "Build a functional Todo List application with local storage persistence, task categories, and a clean minimalist UI.",
-                category: "ایپلی کیشن"
-              }
-            ].map((item, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-3xl group">
-                <div className="flex justify-between items-start mb-4 flex-row-reverse">
-                  <span className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm font-urdu">{item.category}</span>
-                  <button 
-                    onClick={() => navigator.clipboard.writeText(item.prompt)}
-                    className="p-2 hover:bg-white/10 rounded-xl transition-all text-cyan-100/40 hover:text-cyan-400"
-                    title="Copy Prompt"
-                  >
-                    <Copy className="w-5 h-5" />
-                  </button>
-                </div>
-                <h4 className="font-urdu text-2xl mb-4 text-right">{item.title}</h4>
-                <div className="bg-black/40 p-4 rounded-xl font-mono text-sm text-cyan-100/40 line-clamp-2 text-left">
-                  {item.prompt}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Course Roadmap */}
-      <section className="py-32 px-6 bg-white/[0.01]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="font-urdu text-5xl mb-6">سیکھنے کا راستہ</h2>
-            <p className="text-cyan-100/60 font-urdu text-xl">زیرو سے پروفیشنل بننے تک کے مراحل</p>
-          </div>
-
-          <div className="space-y-12 relative">
-            <div className="absolute top-0 bottom-0 right-[23px] w-0.5 bg-gradient-to-b from-cyan-500 via-purple-500 to-transparent hidden md:block" />
-            
-            {[
-              { step: "01", title: "AI ٹولز کا تعارف", desc: "سب سے پہلے ہم آپ کو بہترین AI ٹولز (جیسے ChatGPT, Claude) کے بارے میں بتائیں گے۔" },
-              { step: "02", title: "پرامپٹ انجینئرنگ", desc: "AI سے صحیح کام لینے کا فن سیکھیں تاکہ آپ کی سوچ حقیقت بن سکے۔" },
-              { step: "03", title: "پہلا پروجیکٹ", desc: "ہم مل کر آپ کی پہلی ویب ایپ بنائیں گے، بغیر کسی کوڈنگ کے۔" },
-              { step: "04", title: "ایڈوانس ٹولز", desc: "ڈیٹا بیس اور ہوسٹنگ جیسے ایڈوانس فیچرز کو AI سے کنٹرول کرنا سیکھیں۔" },
-              { step: "05", title: "ارننگ اور فری لانسنگ", desc: "اپنے ہنر کو مارکیٹ میں لائیں اور پیسے کمانا شروع کریں۔" }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-8 flex-row-reverse relative"
-              >
-                <div className="w-12 h-12 rounded-full bg-[#000d26] border-2 border-cyan-500 flex items-center justify-center shrink-0 z-10 font-bold text-cyan-400">
-                  {item.step}
-                </div>
-                <div className="text-right pt-2">
-                  <h4 className="font-urdu text-2xl mb-2 text-white">{item.title}</h4>
-                  <p className="text-cyan-100/60 leading-relaxed font-urdu">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-32 px-6">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-cyan-600 to-purple-600 rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-          <div className="relative z-10">
-            <h2 className="font-urdu text-5xl md:text-6xl mb-8">آج ہی اپنا سفر شروع کریں!</h2>
-            <p className="text-xl md:text-2xl mb-12 text-white/90 font-urdu">
-              AI کی دنیا میں قدم رکھیں اور مستقبل کے ہنر سیکھیں۔
-            </p>
-            <button className="bg-white text-[#000d26] px-12 py-6 rounded-2xl font-bold text-2xl hover:scale-105 transition-all shadow-2xl font-urdu">
-              ابھی جوائن کریں
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-20 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse justify-between items-center gap-12">
           <div className="flex items-center gap-2">
             <BrainCircuit className="w-8 h-8 text-cyan-400" />
             <span className="font-urdu text-2xl font-bold">دی برائٹ فیوچر اے آئی سکلز سینٹر</span>
-          </div>
-          <div className="flex gap-8 font-urdu text-lg flex-row-reverse">
-            <a href="#" className="text-cyan-100/60 hover:text-white">پرائیویسی</a>
-            <a href="#" className="text-cyan-100/60 hover:text-white">شرائط</a>
-            <a href="#" className="text-cyan-100/60 hover:text-white">رابطہ</a>
           </div>
           <p className="text-cyan-100/40 text-sm">© 2026 دی برائٹ فیوچر اے آئی سکلز سینٹر۔ تمام حقوق محفوظ ہیں۔</p>
         </div>
